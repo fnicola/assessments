@@ -1,12 +1,13 @@
 package net.peerindex.challenge.webcrawler;
 
+
 /**
  * A store of String values retrievable by a String key.
  * 
  * The contains method and get method should execute in O(1) time regardless of the
  * number of key,value pairs in the store.
  */
-public interface KeyValueStore {
+public interface KeyValueStore{
 
     /**
      * Return true if store contains a value for the key.
