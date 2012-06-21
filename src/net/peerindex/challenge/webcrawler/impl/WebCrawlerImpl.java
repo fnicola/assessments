@@ -60,15 +60,15 @@ public class WebCrawlerImpl implements WebCrawler {
 			main.awaitTermination(100, TimeUnit.MINUTES);
 		} catch (InterruptedException e1) {
 			System.out.println("Execution has timed out");
+			main.shutdownNow();
 		}
 		
 		fetcher.shutdown();
 		try {
 			handle.get();
 			System.out.println("We are done. Got:" + store);
-			
 		} catch (Exception e) {
-			throw new RuntimeException(e);
+			throw new RuntimeException("Encountered RuntimeException while queueing files",e);
 		}
 	}
 
