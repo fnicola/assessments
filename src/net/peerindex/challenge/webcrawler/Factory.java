@@ -9,15 +9,14 @@ import java.util.Iterator;
 public class Factory {
 
     public static KeyValueStore createKeyValueStore() {
-        return null; //TODO
+        return new MemoryKeyValueStore();
     }
 
     public static WebCrawler createWebCrawler() {
-        return null; //TODO
+        return new MultiThreadWebCrawler();
     }
 
     public static Iterator<URL> createURLIterator() {
-        return null; //TODO
+        return new URLIterator("C:/Users/developer/Assessments/resources");
     }
-
 }
