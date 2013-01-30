@@ -1,0 +1,14 @@
+#!/bin/sh
+exec 2>&1
+
+cd $(dirname $0)
+
+exec java -Dapp=peerindex.crawler \
+-server \
+-Djava.awt.headless=true \
+-Djava.net.preferIPv4Stack=true \
+-Djava.net.preferIPv6Addresses=false \
+-Dfile.encoding=UTF-8 \
+-classpath "./*" \
+net.peerindex.challenge.webcrawler.RunCrawl;
+

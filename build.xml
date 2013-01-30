@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="build" name="peerindex.crawler">
+
+	<property name="test.dir" value="src/test" />
+	<property name="classes.dir" value="bin" />
+	<property name="jar.dir" value="${classes.dir}/jar" />
+	<property name="jar.name" value="peerindex.crawler" />
+	<property name="reports.dir" value="test.reports" />
+
+    
+    <path id="project.classpath">
+		<fileset dir="./lib/">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="./dist/">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<target name="init" depends="clean">
+		<mkdir dir="bin" />
+        <mkdir dir="dist" />
+	</target>
+
+	<target name="clean">
+		<delete dir="bin" />
+		<delete dir="dist" />
+        <delete dir="${reports.dir}" />
+	</target>
+
+	<target depends="init" name="build">
+		<echo message="${ant.project.name}: ${ant.file}" />
+		<javac destdir="bin" debug="on" debuglevel="lines,vars,source" source="1.6" target="1.6">
+			<src path="src" />
+			<classpath refid="project.classpath" />
+		</javac>
+		<copy todir="bin">
+			<fileset dir="src" excludes="**/*.java" />
+		</copy>
+		<jar destfile="dist/${ant.project.name}.jar" basedir="bin" />
+	</target>
+
+
+	<target name="test" depends="build">
+		<mkdir dir="${reports.dir}/raw" />
+		<junit printsummary="withOutAndErr" filtertrace="false" showoutput="true" haltonerror="false">
+			<classpath refid="project.classpath" />
+			<batchtest fork="yes" todir="${reports.dir}/raw/">
+				<formatter type="plain" />
+				<fileset dir="${test.dir}">
+					<include name="**/*Test.java" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+
+</project>
