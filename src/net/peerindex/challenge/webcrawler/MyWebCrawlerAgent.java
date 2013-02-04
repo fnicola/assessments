@@ -58,7 +58,7 @@ public class MyWebCrawlerAgent implements Runnable {
 			    		sb.append(line);
 			    	}
 			    
-			    	System.out.println(""+statuscode +" : " + url.toString() + " : " + sb.toString());
+			    	//System.out.println(""+statuscode +" : " + url.toString() + " : " + sb.toString());
 			    	
 			    	if(statuscode == 200)
 						_kvstore.put(url.toString(), sb.toString());	

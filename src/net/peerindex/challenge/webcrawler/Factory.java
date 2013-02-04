@@ -13,11 +13,11 @@ public class Factory {
     }
 
     public static WebCrawler createWebCrawler() {
-        return new MyWebCrawler();
+        return new MyWebCrawler(50);
     }
 
     public static Iterator<URL> createURLIterator() {
-        return new URLStream();
+        return new URLStream(167);
     }
 
 }

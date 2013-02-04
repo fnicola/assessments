@@ -17,9 +17,12 @@ public class MyWebCrawler implements WebCrawler{
 	private KeyValueStore _store;
 	private Iterator<URL> _urlstream;
 	
-	private final int _numberofagents = 100;
+	private int _numberofagents;
 	private ArrayList<MyWebCrawlerAgent> _agentlist;
 	
+	public MyWebCrawler(int numberthreads){
+		_numberofagents = numberthreads;
+	}
 	
     public void setKeyValueStore(KeyValueStore store){
     	_store = store;

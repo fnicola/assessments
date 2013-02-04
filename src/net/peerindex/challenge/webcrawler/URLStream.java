@@ -20,10 +20,11 @@ public class URLStream implements Iterator<URL> {
 	
     private final String _path = "./resources";
     private final String _filename_part = "part-m-";
-    private final int _numberfiletocrawl = 1;
+    private int _numberfiletocrawl = 1;
     
-    public URLStream() {
-		_listOfFiles = new File[_numberfiletocrawl];
+    public URLStream(int numberfilestocrawl) {
+    	_numberfiletocrawl = numberfilestocrawl;
+    	_listOfFiles = new File[_numberfiletocrawl];
 		
 		for(int i = 0 ; i<_numberfiletocrawl ; i++)
 			_listOfFiles[i] = new File(_path + "/" + _filename_part + String.format("%05d",i));
