@@ -11,7 +11,7 @@ import java.util.Map;
 public class BcWebCrawler implements WebCrawler {
 
     private static final String FILENAME_PREFIX = "resources/part-m-";
-    private static final int MAX_FILENAME_INDEX = 167;
+    private static final int MAX_FILENAME_INDEX = 0;
     private static final int MAX_NUMBER_OF_CONCURRENT_TASKS = 4;
     private KeyValueStore store;
     private boolean finished = false;
@@ -65,12 +65,15 @@ public class BcWebCrawler implements WebCrawler {
 
     public void reportResults(final Map<String, String> results, final MapTask task) {
         for (String key : results.keySet()) {
-            store.put(key, results.get(key));
+            String result = results.get(key);
+            
+            if (result != null) {
+                store.put(key, result);
+            }
         }
         
         try {
             activeTasks.remove(task);
-            System.out.println(">>>>>Tasks: " + activeTasks.size());
             startNewTaskIfNecessary();
             
             if (activeTasks.size() == 0 && !finished) {
@@ -96,7 +99,6 @@ public class BcWebCrawler implements WebCrawler {
             MapTask newTask = new MapTask(file, this);
             activeTasks.add(newTask);
             new Thread(newTask).start();
-            System.out.println(">>>>>Tasks: " + activeTasks.size());
         }
     }
     

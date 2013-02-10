@@ -31,8 +31,6 @@ public class BcKeyValueStore implements KeyValueStore {
             throw new IllegalArgumentException("BcKeyStore::put() - null value");
         }
         
-        System.out.println(key);
-        System.out.println(value);
         return map.put(key, value) == null;
     }
 

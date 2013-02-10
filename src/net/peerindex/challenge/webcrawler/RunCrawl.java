@@ -1,5 +1,7 @@
 package net.peerindex.challenge.webcrawler;
 
+import java.io.IOException;
+
 /**
  * Run crawl from command line.
  */
@@ -15,6 +17,13 @@ public class RunCrawl {
         crawler.initialise();
         crawler.execute();
         crawler.shutdown();
+        
+        try {
+            new TfIdfEvaluator(store, UrlExtractor.extractUrlsFrom("resources/part-m-00000"));
+        } catch (IOException e) {
+            System.out.println(">>>>>Could not evaluate TF.IDF");
+            e.printStackTrace();
+        }
     }
 
     /**

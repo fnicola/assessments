@@ -23,4 +23,8 @@ public class UrlExtractor {
         
         return result;
     }
+    
+    public static List<String> extractUrlsFrom(final String filename) throws IOException {
+        return extractUrlsFrom(new File(filename));
+    }
 }
