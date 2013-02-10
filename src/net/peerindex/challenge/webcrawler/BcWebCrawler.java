@@ -11,7 +11,7 @@ import java.util.Map;
 public class BcWebCrawler implements WebCrawler {
 
     private static final String FILENAME_PREFIX = "resources/part-m-";
-    private static final int MAX_FILENAME_INDEX = 0;
+    private static final int MAX_FILENAME_INDEX = 167;
     private static final int MAX_NUMBER_OF_CONCURRENT_TASKS = 4;
     private KeyValueStore store;
     private boolean finished = false;
