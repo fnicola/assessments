@@ -9,15 +9,15 @@ import java.util.Iterator;
 public class Factory {
 
     public static KeyValueStore createKeyValueStore() {
-        return null; //TODO
+        return new BcKeyValueStore();
     }
 
     public static WebCrawler createWebCrawler() {
-        return null; //TODO
+        return new BcWebCrawler();
     }
 
     public static Iterator<URL> createURLIterator() {
-        return null; //TODO
+        return null; // not using the iterator, distributing input files to MapTasks directly to aid parallel execution
     }
 
 }
