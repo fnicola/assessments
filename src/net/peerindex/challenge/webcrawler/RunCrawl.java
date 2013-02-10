@@ -8,13 +8,13 @@ public class RunCrawl {
     public RunCrawl() {
 
         WebCrawler crawler = Factory.createWebCrawler();
-        crawler.setKeyValueStore(Factory.createKeyValueStore());
+        KeyValueStore store = Factory.createKeyValueStore();
+        crawler.setKeyValueStore(store);
         crawler.setURLStream(Factory.createURLIterator());
 
         crawler.initialise();
         crawler.execute();
         crawler.shutdown();
-
     }
 
     /**
