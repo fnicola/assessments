@@ -4,7 +4,7 @@ Please find an eclipse project with some code-stubs which you
 need to fill out. 
 
 The task is to crawl and store as many URLs as possible from
-our list of URLs. 
+our list of URLs (i.e. emphasis on scalability).
 
 Before starting your assessment, please FORK this repo on your
 github account. 
